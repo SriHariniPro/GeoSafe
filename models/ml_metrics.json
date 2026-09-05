@@ -1,0 +1,94 @@
+{
+  "dataset_rows": 10000,
+  "test_rows": 2000,
+  "accuracy": 0.8475,
+  "precision": 0.8463,
+  "recall": 0.8475,
+  "f1_score": 0.8454,
+  "r2_score": 0.8214,
+  "classes": [
+    "HIGH",
+    "LOW",
+    "MEDIUM"
+  ],
+  "confusion_matrix": [
+    [
+      113,
+      0,
+      84
+    ],
+    [
+      0,
+      393,
+      75
+    ],
+    [
+      36,
+      110,
+      1189
+    ]
+  ],
+  "feature_importances": [
+    {
+      "feature": "traffic_code",
+      "importance": 21.06
+    },
+    {
+      "feature": "traffic_severity_index",
+      "importance": 13.35
+    },
+    {
+      "feature": "weather_code",
+      "importance": 13.32
+    },
+    {
+      "feature": "weather_risk_index",
+      "importance": 7.69
+    },
+    {
+      "feature": "hour",
+      "importance": 6.97
+    },
+    {
+      "feature": "is_night",
+      "importance": 5.84
+    },
+    {
+      "feature": "latitude",
+      "importance": 5.78
+    },
+    {
+      "feature": "longitude",
+      "importance": 5.75
+    },
+    {
+      "feature": "visibility",
+      "importance": 5.6
+    },
+    {
+      "feature": "temperature",
+      "importance": 5.39
+    },
+    {
+      "feature": "construction_code",
+      "importance": 5.12
+    },
+    {
+      "feature": "speed_limit",
+      "importance": 2.54
+    },
+    {
+      "feature": "is_weekend",
+      "importance": 0.88
+    },
+    {
+      "feature": "is_peak_hour",
+      "importance": 0.69
+    },
+    {
+      "feature": "road_type_code",
+      "importance": 0.0
+    }
+  ],
+  "disclaimer": "Performance metrics are based on the provided dataset and represent local evaluation."
+}
