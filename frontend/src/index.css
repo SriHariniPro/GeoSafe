@@ -139,10 +139,53 @@ html.light h4:not(.keep-white) {
   font-weight: 800;
 }
 
-html.light span.text-white:not([class*="bg-"]):not(button *):not(a *),
-html.light div.text-white:not([class*="bg-"]):not(button *):not(a *),
-html.light p.text-white:not([class*="bg-"]):not(button *):not(a *) {
-  color: #0f172a !important;
+html.light span.text-white:not([class*="bg-"]):not(a *),
+html.light div.text-white:not([class*="bg-"]):not(a *),
+html.light p.text-white:not([class*="bg-"]):not(a *),
+html.light strong.text-white:not([class*="bg-"]):not(a *) {
+  color: #000000 !important;
+}
+
+/* Route Score & Strategy Card High-Contrast Black & White Styles */
+html.light .route-score-value {
+  color: #000000 !important;
+  font-weight: 900 !important;
+}
+html.light .route-score-sub {
+  color: #334155 !important;
+  font-weight: 700 !important;
+}
+html.light .route-score-label {
+  color: #475569 !important;
+  font-weight: 800 !important;
+}
+html.light .route-detail-label {
+  color: #334155 !important;
+  font-weight: 600 !important;
+}
+html.light .route-detail-value {
+  color: #000000 !important;
+  font-weight: 800 !important;
+}
+
+html.dark .route-score-value {
+  color: #ffffff !important;
+  font-weight: 900 !important;
+}
+html.dark .route-score-sub {
+  color: #94a3b8 !important;
+  font-weight: 500 !important;
+}
+html.dark .route-score-label {
+  color: #94a3b8 !important;
+  font-weight: 700 !important;
+}
+html.dark .route-detail-label {
+  color: #94a3b8 !important;
+}
+html.dark .route-detail-value {
+  color: #f8fafc !important;
+  font-weight: 800 !important;
 }
 
 /* High-Contrast Color Accents for Light Mode (WCAG AA/AAA Compliant) */

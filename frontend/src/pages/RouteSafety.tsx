@@ -104,7 +104,7 @@ export const RouteSafety: React.FC = () => {
                     onClick={() => setSelectedRoute(rt)}
                     className={`p-4 rounded-2xl border text-left transition-all space-y-2.5 flex flex-col justify-between ${
                       selectedRoute?.strategy === rt.strategy
-                        ? 'bg-emerald-50/60 dark:bg-navy-850 border-emerald-500 shadow-xl shadow-emerald-500/10 ring-2 ring-emerald-500'
+                        ? 'bg-emerald-50/70 dark:bg-navy-850 border-emerald-500 shadow-xl shadow-emerald-500/10 ring-2 ring-emerald-500'
                         : 'bg-white dark:bg-navy-900 border-slate-200 dark:border-navy-750 hover:bg-slate-50 dark:hover:bg-navy-850/50 shadow-sm'
                     }`}
                   >
@@ -117,34 +117,34 @@ export const RouteSafety: React.FC = () => {
                       </div>
 
                       <div>
-                        <div className="text-2xl font-black text-slate-950 dark:text-white flex items-baseline gap-1">
+                        <div className="route-score-value text-2xl font-black flex items-baseline gap-1">
                           <span>{rt.safety_score}</span>
-                          <span className="text-xs text-slate-500 dark:text-slate-400 font-semibold">/ 100</span>
+                          <span className="route-score-sub text-xs">/ 100</span>
                         </div>
-                        <span className="text-[9px] text-slate-500 dark:text-slate-400 font-bold uppercase tracking-wider">Safety Score</span>
+                        <span className="route-score-label text-[9px] uppercase tracking-wider block mt-0.5">Safety Score</span>
                       </div>
                     </div>
 
-                    <div className="space-y-1.5 text-[11px] border-t border-slate-200 dark:border-navy-750 pt-2 text-slate-700 dark:text-slate-300 font-medium w-full">
+                    <div className="space-y-1.5 text-[11px] border-t border-slate-200 dark:border-navy-750 pt-2 font-medium w-full">
                       <div className="flex justify-between">
-                        <span className="text-slate-500 dark:text-slate-400">Distance & Time:</span>
-                        <span className="font-bold text-slate-900 dark:text-white">{rt.distance_km} km ({rt.duration_min}m)</span>
+                        <span className="route-detail-label">Distance & Time:</span>
+                        <span className="route-detail-value">{rt.distance_km} km ({rt.duration_min}m)</span>
                       </div>
                       <div className="flex justify-between items-center">
-                        <span className="text-slate-500 dark:text-slate-400">Hotspots:</span>
+                        <span className="route-detail-label">Hotspots:</span>
                         {rt.hotspots_crossed === 0 ? (
-                          <span className="text-emerald-800 dark:text-emerald-300 bg-emerald-100 dark:bg-emerald-950 px-1.5 py-0.5 rounded font-black text-[10px] border border-emerald-300 dark:border-emerald-800">0 (Zero Hotspot)</span>
+                          <span className="text-emerald-900 dark:text-emerald-300 bg-emerald-100 dark:bg-emerald-950 px-1.5 py-0.5 rounded font-black text-[10px] border border-emerald-300 dark:border-emerald-800">0 (Zero Hotspot)</span>
                         ) : (
-                          <span className="text-rose-600 dark:text-rose-400 font-extrabold">{rt.hotspots_crossed}</span>
+                          <span className="text-rose-700 dark:text-rose-400 font-extrabold">{rt.hotspots_crossed}</span>
                         )}
                       </div>
                       <div className="flex justify-between">
-                        <span className="text-slate-500 dark:text-slate-400">Accidents Near:</span>
-                        <span className="text-amber-800 dark:text-amber-400 font-bold">{rt.accidents_near}</span>
+                        <span className="route-detail-label">Accidents Near:</span>
+                        <span className="text-amber-800 dark:text-amber-400 font-extrabold">{rt.accidents_near}</span>
                       </div>
                       <div className="flex justify-between">
-                        <span className="text-slate-500 dark:text-slate-400">Construction:</span>
-                        <span className="text-yellow-800 dark:text-yellow-400 font-bold">{rt.construction_near}</span>
+                        <span className="route-detail-label">Construction:</span>
+                        <span className="text-yellow-800 dark:text-yellow-400 font-extrabold">{rt.construction_near}</span>
                       </div>
                     </div>
                   </button>
