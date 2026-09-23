@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { Search, Shield, User as UserIcon, LogOut, Bell, Compass } from 'lucide-react';
+import { Search, Shield, User as UserIcon, LogOut, Sun, Moon } from 'lucide-react';
 import { User } from '../../types';
+import { useTheme } from '../../context/ThemeContext';
 
 interface NavbarProps {
   user: User | null;
@@ -10,6 +11,7 @@ interface NavbarProps {
 
 export const Navbar: React.FC<NavbarProps> = ({ user, onLogout, onSearch }) => {
   const [searchTerm, setSearchTerm] = useState('');
+  const { theme, toggleTheme } = useTheme();
 
   const handleSearchSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -26,8 +28,8 @@ export const Navbar: React.FC<NavbarProps> = ({ user, onLogout, onSearch }) => {
           <Shield className="w-5 h-5 text-white" />
         </div>
         <div>
-          <h1 className="text-lg font-black text-white tracking-wider flex items-center gap-2">
-            GeoSafe <span className="text-[10px] uppercase font-bold px-2 py-0.5 rounded bg-cyan-500/20 text-cyan-400 border border-cyan-500/30">Chennai AI</span>
+          <h1 className="text-lg font-black tracking-wider flex items-center gap-2">
+            GeoSafe <span className="text-[10px] uppercase font-bold px-2 py-0.5 rounded bg-cyan-500/20 text-cyan-500 dark:text-cyan-400 border border-cyan-500/30">Chennai AI</span>
           </h1>
           <p className="text-[10px] text-slate-400 font-medium">Explainable Spatiotemporal Safety Intelligence</p>
         </div>
@@ -45,8 +47,29 @@ export const Navbar: React.FC<NavbarProps> = ({ user, onLogout, onSearch }) => {
         />
       </form>
 
-      {/* User Controls */}
-      <div className="flex items-center gap-4">
+      {/* User Controls & Theme Toggle */}
+      <div className="flex items-center gap-3">
+        {/* Light / Dark Mode Toggle Button */}
+        <button
+          onClick={toggleTheme}
+          type="button"
+          title={theme === 'dark' ? 'Switch to Light Mode' : 'Switch to Dark Mode'}
+          aria-label={theme === 'dark' ? 'Switch to Light Mode' : 'Switch to Dark Mode'}
+          className="p-2 rounded-xl bg-navy-800 text-slate-400 hover:text-amber-500 dark:hover:text-amber-300 border border-navy-700 transition-all flex items-center gap-1.5 text-xs font-semibold"
+        >
+          {theme === 'dark' ? (
+            <>
+              <Sun className="w-4 h-4 text-amber-400 transition-transform duration-300 rotate-0 hover:rotate-45" />
+              <span className="hidden sm:inline text-xs text-slate-300">Light</span>
+            </>
+          ) : (
+            <>
+              <Moon className="w-4 h-4 text-indigo-500 transition-transform duration-300 -rotate-12 hover:rotate-0" />
+              <span className="hidden sm:inline text-xs text-slate-700">Dark</span>
+            </>
+          )}
+        </button>
+
         {user ? (
           <div className="flex items-center gap-3">
             <span className={`text-xs font-extrabold px-2.5 py-1 rounded-full uppercase border ${

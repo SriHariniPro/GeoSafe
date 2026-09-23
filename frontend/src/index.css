@@ -2,19 +2,160 @@
 @import 'leaflet/dist/leaflet.css';
 
 :root {
+  --bg-app: #060b13;
+  --bg-surface: #0a1120;
+  --bg-card: #0f182e;
+  --bg-input: #14213d;
+  --border-subtle: #1d2d50;
+  --text-primary: #f8fafc;
+  --text-secondary: #cbd5e1;
+  --text-muted: #64748b;
   color-scheme: dark;
+}
+
+html.light {
+  --bg-app: #f8fafc;
+  --bg-surface: #ffffff;
+  --bg-card: #ffffff;
+  --bg-input: #f1f5f9;
+  --border-subtle: #e2e8f0;
+  --text-primary: #0f172a;
+  --text-secondary: #334155;
+  --text-muted: #64748b;
+  color-scheme: light;
 }
 
 body {
   margin: 0;
   padding: 0;
-  background-color: #060b13;
-  color: #f1f5f9;
+  background-color: var(--bg-app);
+  color: var(--text-primary);
   font-family: 'Inter', system-ui, -apple-system, sans-serif;
   overflow-x: hidden;
+  transition: background-color 0.25s ease, color 0.25s ease;
 }
 
-/* Fix Native Select Dropdown Option Styling for Dark Theme */
+/* ========================================================
+   LIGHT MODE OVERRIDES FOR APP-WIDE ADAPTATION
+   ======================================================== */
+
+/* Root & Layout */
+html.light body {
+  background-color: #f8fafc;
+  color: #0f172a;
+}
+
+html.light .bg-navy-950 {
+  background-color: #f8fafc !important;
+}
+
+html.light .bg-navy-900 {
+  background-color: #ffffff !important;
+}
+
+html.light .bg-navy-900\/90 {
+  background-color: rgba(255, 255, 255, 0.92) !important;
+}
+
+html.light .bg-navy-900\/80 {
+  background-color: rgba(255, 255, 255, 0.88) !important;
+}
+
+html.light .bg-navy-900\/60 {
+  background-color: rgba(255, 255, 255, 0.75) !important;
+}
+
+html.light .bg-navy-850 {
+  background-color: #f8fafc !important;
+}
+
+html.light .bg-navy-850\/40 {
+  background-color: rgba(241, 245, 249, 0.6) !important;
+}
+
+html.light .bg-navy-800 {
+  background-color: #f1f5f9 !important;
+}
+
+html.light .bg-navy-800\/80 {
+  background-color: rgba(241, 245, 249, 0.9) !important;
+}
+
+html.light .bg-navy-800\/60 {
+  background-color: rgba(241, 245, 249, 0.7) !important;
+}
+
+/* Borders */
+html.light .border-navy-700,
+html.light .border-navy-700\/60,
+html.light .border-navy-700\/80,
+html.light .border-navy-750,
+html.light .border-navy-800,
+html.light .border-slate-800,
+html.light .border-slate-700,
+html.light .border-slate-700\/60,
+html.light .border-slate-700\/50 {
+  border-color: #e2e8f0 !important;
+}
+
+/* Text Colors */
+html.light .text-slate-100 {
+  color: #0f172a !important;
+}
+
+html.light .text-slate-200 {
+  color: #1e293b !important;
+}
+
+html.light .text-slate-300 {
+  color: #334155 !important;
+}
+
+html.light .text-slate-400 {
+  color: #64748b !important;
+}
+
+html.light .text-slate-500 {
+  color: #64748b !important;
+}
+
+/* Specific Headings & White text replacement, preserving button labels */
+html.light h1:not(.keep-white),
+html.light h2:not(.keep-white),
+html.light h3:not(.keep-white),
+html.light h4:not(.keep-white) {
+  color: #0f172a;
+}
+
+html.light span.text-white:not([class*="bg-"]):not(button *):not(a *),
+html.light div.text-white:not([class*="bg-"]):not(button *):not(a *),
+html.light p.text-white:not([class*="bg-"]):not(button *):not(a *) {
+  color: #0f172a;
+}
+
+/* Form Inputs & Selects */
+html.light input:not([type="checkbox"]):not([type="radio"]),
+html.light select,
+html.light textarea {
+  background-color: #ffffff !important;
+  color: #0f172a !important;
+  border-color: #cbd5e1 !important;
+}
+
+html.light input::placeholder,
+html.light textarea::placeholder {
+  color: #94a3b8 !important;
+}
+
+html.light input:focus,
+html.light select:focus,
+html.light textarea:focus {
+  background-color: #ffffff !important;
+  border-color: #0284c7 !important;
+  box-shadow: 0 0 0 2px rgba(2, 132, 199, 0.15) !important;
+}
+
+/* Select Dropdown options */
 select, select option, select optgroup {
   background-color: #0f182e !important;
   color: #f8fafc !important;
@@ -25,7 +166,95 @@ select:focus option:hover, select option:checked {
   color: #38bdf8 !important;
 }
 
-/* Custom scrollbars */
+html.light select,
+html.light select option,
+html.light select optgroup {
+  background-color: #ffffff !important;
+  color: #0f172a !important;
+}
+
+html.light select:focus option:hover,
+html.light select option:checked {
+  background-color: #f1f5f9 !important;
+  color: #0284c7 !important;
+}
+
+/* Card Shadows & Elevation */
+html.light .shadow-lg,
+html.light .shadow-xl,
+html.light .shadow-2xl {
+  box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.06), 0 2px 6px -1px rgba(15, 23, 42, 0.04) !important;
+}
+
+/* Gradients for Hero and Cards */
+html.light .from-navy-950 {
+  --tw-gradient-from: #ffffff var(--tw-gradient-from-position) !important;
+}
+
+html.light .from-cyan-950\/80 {
+  --tw-gradient-from: rgba(224, 242, 254, 0.85) var(--tw-gradient-from-position) !important;
+}
+
+html.light .via-navy-900 {
+  --tw-gradient-stops: var(--tw-gradient-via-stops, var(--tw-gradient-position), #f8fafc var(--tw-gradient-via-position), #f1f5f9 var(--tw-gradient-to-position)) !important;
+}
+
+html.light .to-navy-850 {
+  --tw-gradient-to: #f1f5f9 var(--tw-gradient-to-position) !important;
+}
+
+/* Background Slate Pills / Sub-containers */
+html.light .bg-slate-900,
+html.light .bg-slate-900\/80,
+html.light .bg-slate-900\/60 {
+  background-color: #f1f5f9 !important;
+  border-color: #e2e8f0 !important;
+}
+
+html.light .bg-slate-800 {
+  background-color: #e2e8f0 !important;
+  color: #1e293b !important;
+}
+
+/* Role / Status Badge tweaks for Light Mode */
+html.light .bg-rose-950,
+html.light .bg-rose-950\/80 {
+  background-color: #ffe4e6 !important;
+  color: #e11d48 !important;
+  border-color: #fecdd3 !important;
+}
+
+html.light .bg-emerald-950,
+html.light .bg-emerald-950\/80 {
+  background-color: #d1fae5 !important;
+  color: #059669 !important;
+  border-color: #a7f3d0 !important;
+}
+
+html.light .bg-amber-950,
+html.light .bg-amber-950\/80,
+html.light .bg-amber-950\/40,
+html.light .bg-yellow-950 {
+  background-color: #fef3c7 !important;
+  color: #d97706 !important;
+  border-color: #fde68a !important;
+}
+
+/* Table styling for Light Mode */
+html.light table thead tr {
+  background-color: #f1f5f9 !important;
+}
+
+html.light table tbody tr:hover {
+  background-color: #f8fafc !important;
+}
+
+html.light table th,
+html.light table td {
+  border-color: #e2e8f0 !important;
+}
+
+/* Scrollbars */
 ::-webkit-scrollbar {
   width: 6px;
   height: 6px;
@@ -41,7 +270,17 @@ select:focus option:hover, select option:checked {
   background: #334155;
 }
 
-/* Leaflet map dark mode override */
+html.light ::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+html.light ::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+}
+html.light ::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* Leaflet map styles */
 .leaflet-container {
   background-color: #0a1120 !important;
   font-family: inherit;
@@ -53,7 +292,34 @@ select:focus option:hover, select option:checked {
   border: 1px solid #1e293b;
 }
 
-/* Custom pulse animations */
+html.light .leaflet-container {
+  background-color: #f8fafc !important;
+}
+
+html.light .leaflet-popup-content-wrapper,
+html.light .leaflet-popup-tip {
+  background-color: #ffffff !important;
+  color: #0f172a !important;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
+}
+
+/* Recharts Tooltips & Legend */
+html.light .recharts-tooltip-wrapper .recharts-default-tooltip,
+html.light .recharts-default-tooltip {
+  background-color: #ffffff !important;
+  border: 1px solid #e2e8f0 !important;
+  color: #0f172a !important;
+  border-radius: 12px !important;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1) !important;
+}
+
+html.light .recharts-tooltip-item,
+html.light .recharts-tooltip-label {
+  color: #0f172a !important;
+}
+
+/* Animations */
 @keyframes pulse-glow {
   0%, 100% { opacity: 0.8; transform: scale(1); }
   50% { opacity: 1; transform: scale(1.08); }
