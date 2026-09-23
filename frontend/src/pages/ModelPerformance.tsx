@@ -71,34 +71,34 @@ export const ModelPerformancePage: React.FC = () => {
 
       {/* Metrics Cards Grid */}
       <div className="grid grid-cols-2 sm:grid-cols-5 gap-4">
-        <div className="p-4 rounded-2xl bg-navy-900 border border-navy-700 text-center">
-          <div className="text-3xl font-black text-emerald-400">{(metrics.accuracy * 100).toFixed(1)}%</div>
-          <div className="text-[10px] font-bold uppercase text-slate-400 mt-1">Accuracy</div>
+        <div className="p-4 rounded-2xl bg-white dark:bg-navy-900 border border-slate-200 dark:border-navy-700 text-center shadow-sm">
+          <div className="text-3xl font-black text-emerald-600 dark:text-emerald-400">{(metrics.accuracy * 100).toFixed(1)}%</div>
+          <div className="text-[10px] font-bold uppercase text-slate-500 dark:text-slate-400 mt-1">Accuracy</div>
         </div>
-        <div className="p-4 rounded-2xl bg-navy-900 border border-navy-700 text-center">
-          <div className="text-3xl font-black text-cyan-400">{(metrics.precision * 100).toFixed(1)}%</div>
-          <div className="text-[10px] font-bold uppercase text-slate-400 mt-1">Precision</div>
+        <div className="p-4 rounded-2xl bg-white dark:bg-navy-900 border border-slate-200 dark:border-navy-700 text-center shadow-sm">
+          <div className="text-3xl font-black text-cyan-700 dark:text-cyan-400">{(metrics.precision * 100).toFixed(1)}%</div>
+          <div className="text-[10px] font-bold uppercase text-slate-500 dark:text-slate-400 mt-1">Precision</div>
         </div>
-        <div className="p-4 rounded-2xl bg-navy-900 border border-navy-700 text-center">
-          <div className="text-3xl font-black text-amber-400">{(metrics.recall * 100).toFixed(1)}%</div>
-          <div className="text-[10px] font-bold uppercase text-slate-400 mt-1">Recall</div>
+        <div className="p-4 rounded-2xl bg-white dark:bg-navy-900 border border-slate-200 dark:border-navy-700 text-center shadow-sm">
+          <div className="text-3xl font-black text-amber-600 dark:text-amber-400">{(metrics.recall * 100).toFixed(1)}%</div>
+          <div className="text-[10px] font-bold uppercase text-slate-500 dark:text-slate-400 mt-1">Recall</div>
         </div>
-        <div className="p-4 rounded-2xl bg-navy-900 border border-navy-700 text-center">
-          <div className="text-3xl font-black text-indigo-400">{(metrics.f1_score * 100).toFixed(1)}%</div>
-          <div className="text-[10px] font-bold uppercase text-slate-400 mt-1">F1 Score</div>
+        <div className="p-4 rounded-2xl bg-white dark:bg-navy-900 border border-slate-200 dark:border-navy-700 text-center shadow-sm">
+          <div className="text-3xl font-black text-indigo-600 dark:text-indigo-400">{(metrics.f1_score * 100).toFixed(1)}%</div>
+          <div className="text-[10px] font-bold uppercase text-slate-500 dark:text-slate-400 mt-1">F1 Score</div>
         </div>
-        <div className="p-4 rounded-2xl bg-navy-900 border border-navy-700 text-center col-span-2 sm:col-span-1">
-          <div className="text-3xl font-black text-purple-400">{metrics.r2_score.toFixed(2)}</div>
-          <div className="text-[10px] font-bold uppercase text-slate-400 mt-1">Regressor R² Score</div>
+        <div className="p-4 rounded-2xl bg-white dark:bg-navy-900 border border-slate-200 dark:border-navy-700 text-center col-span-2 sm:col-span-1 shadow-sm">
+          <div className="text-3xl font-black text-purple-600 dark:text-purple-400">{metrics.r2_score.toFixed(2)}</div>
+          <div className="text-[10px] font-bold uppercase text-slate-500 dark:text-slate-400 mt-1">Regressor R² Score</div>
         </div>
       </div>
 
       {/* Feature Importance Chart & Confusion Matrix */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         {/* Global Feature Importance */}
-        <div className="p-6 rounded-2xl bg-navy-900 border border-navy-700/60 shadow-xl space-y-4">
-          <h3 className="text-sm font-bold text-white flex items-center gap-2">
-            <BarChart2 className="w-4 h-4 text-purple-400" /> Tree Feature Importance Rankings (%)
+        <div className="p-6 rounded-2xl bg-white dark:bg-navy-900 border border-slate-200 dark:border-navy-700/60 shadow-xl space-y-4">
+          <h3 className="text-sm font-bold text-slate-900 dark:text-white flex items-center gap-2">
+            <BarChart2 className="w-4 h-4 text-purple-500" /> Tree Feature Importance Rankings (%)
           </h3>
 
           <div className="h-72">
@@ -114,28 +114,43 @@ export const ModelPerformancePage: React.FC = () => {
         </div>
 
         {/* Confusion Matrix Table */}
-        <div className="p-6 rounded-2xl bg-navy-900 border border-navy-700/60 shadow-xl space-y-4">
-          <h3 className="text-sm font-bold text-white">Multiclass Confusion Matrix</h3>
+        <div className="p-6 rounded-2xl bg-white dark:bg-navy-900 border border-slate-200 dark:border-navy-700/60 shadow-xl space-y-4">
+          <div className="flex items-center justify-between">
+            <h3 className="text-sm font-bold text-slate-900 dark:text-white">Multiclass Confusion Matrix</h3>
+            <div className="flex items-center gap-3 text-[10px] font-bold">
+              <span className="flex items-center gap-1.5"><span className="w-2.5 h-2.5 rounded-sm bg-emerald-500 inline-block"></span> Correct</span>
+              <span className="flex items-center gap-1.5"><span className="w-2.5 h-2.5 rounded-sm bg-rose-400 inline-block"></span> Errors</span>
+            </div>
+          </div>
 
           <div className="overflow-x-auto">
             <table className="w-full text-center border-collapse">
               <thead>
-                <tr className="bg-slate-100 dark:bg-navy-950 text-[10px] text-slate-800 dark:text-slate-300 font-extrabold uppercase">
-                  <th className="p-2 border border-slate-300 dark:border-navy-800">Actual \ Predicted</th>
+                <tr className="bg-slate-100 dark:bg-navy-950 text-[11px] text-slate-900 dark:text-slate-200 font-extrabold uppercase">
+                  <th className="p-3 border border-slate-200 dark:border-navy-800">Actual \ Predicted</th>
                   {metrics.classes.map(c => (
-                    <th key={`hdr-${c}`} className="p-2 border border-slate-300 dark:border-navy-800 text-cyan-700 dark:text-cyan-400 font-black">{c}</th>
+                    <th key={`hdr-${c}`} className="p-3 border border-slate-200 dark:border-navy-800 text-cyan-800 dark:text-cyan-300 font-black">{c}</th>
                   ))}
                 </tr>
               </thead>
-              <tbody className="text-xs font-bold text-slate-900 dark:text-white">
+              <tbody className="text-xs">
                 {metrics.confusion_matrix.map((row, rIdx) => (
                   <tr key={`row-${rIdx}`}>
-                    <td className="p-2 border border-slate-300 dark:border-navy-800 bg-slate-100 dark:bg-navy-950 text-slate-900 dark:text-slate-300 font-extrabold">{metrics.classes[rIdx]}</td>
-                    {row.map((val, cIdx) => (
-                      <td key={`cell-${rIdx}-${cIdx}`} className={`p-3 border border-slate-300 dark:border-navy-800 ${rIdx === cIdx ? 'bg-emerald-100 dark:bg-emerald-950/80 text-emerald-800 dark:text-emerald-300 font-black' : 'bg-slate-50 dark:bg-navy-850/40 text-slate-600 dark:text-slate-400'}`}>
-                        {val}
-                      </td>
-                    ))}
+                    <td className="p-3 border border-slate-200 dark:border-navy-800 bg-slate-50 dark:bg-navy-950 text-slate-900 dark:text-slate-200 font-black">{metrics.classes[rIdx]}</td>
+                    {row.map((val, cIdx) => {
+                      const isDiagonal = rIdx === cIdx;
+                      const isZero = val === 0;
+                      const cellClass = isDiagonal 
+                        ? 'cm-diag-cell' 
+                        : isZero 
+                          ? 'cm-zero-cell' 
+                          : 'cm-error-cell';
+                      return (
+                        <td key={`cell-${rIdx}-${cIdx}`} className={`p-3.5 transition-all text-sm ${cellClass}`}>
+                          {val}
+                        </td>
+                      );
+                    })}
                   </tr>
                 ))}
               </tbody>
