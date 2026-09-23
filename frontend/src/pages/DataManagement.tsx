@@ -113,7 +113,7 @@ export const DataManagement: React.FC = () => {
         <div className="overflow-x-auto">
           <table className="w-full text-left border-collapse">
             <thead>
-              <tr className="border-b border-navy-750 text-[10px] uppercase tracking-wider text-slate-400 bg-navy-950/60">
+              <tr className="border-b border-slate-300 dark:border-navy-750 text-[10px] uppercase tracking-wider font-extrabold text-slate-800 dark:text-slate-300 bg-slate-100 dark:bg-navy-950/60">
                 <th className="p-3">ID</th>
                 <th className="p-3">Road Name</th>
                 <th className="p-3">Area</th>
@@ -124,17 +124,17 @@ export const DataManagement: React.FC = () => {
                 <th className="p-3">Risk Score</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-navy-800 text-xs">
+            <tbody className="divide-y divide-slate-200 dark:divide-navy-800 text-xs">
               {accidents.map((acc) => (
-                <tr key={`prev-${acc.accident_id}`} className="hover:bg-navy-800/50 transition-all">
-                  <td className="p-3 font-bold text-cyan-400">{acc.accident_id}</td>
-                  <td className="p-3 font-bold text-white">{acc.road_name}</td>
-                  <td className="p-3 text-slate-300">{acc.area}</td>
-                  <td className="p-3 text-slate-300">{acc.date}</td>
-                  <td className="p-3 font-bold text-rose-400">{acc.accident_severity}</td>
-                  <td className="p-3 text-slate-300">{acc.weather}</td>
-                  <td className="p-3 text-slate-300">{acc.traffic_level}</td>
-                  <td className="p-3 font-extrabold text-amber-400">{acc.risk_score}</td>
+                <tr key={`prev-${acc.accident_id}`} className="hover:bg-slate-50 dark:hover:bg-navy-800/50 transition-all">
+                  <td className="p-3 font-bold text-cyan-700 dark:text-cyan-400">{acc.accident_id}</td>
+                  <td className="p-3 font-bold text-slate-900 dark:text-white">{acc.road_name}</td>
+                  <td className="p-3 font-medium text-slate-700 dark:text-slate-300">{acc.area}</td>
+                  <td className="p-3 font-medium text-slate-700 dark:text-slate-300">{acc.date}</td>
+                  <td className="p-3 font-bold text-rose-600 dark:text-rose-400">{acc.accident_severity}</td>
+                  <td className="p-3 font-medium text-slate-700 dark:text-slate-300">{acc.weather}</td>
+                  <td className="p-3 font-medium text-slate-700 dark:text-slate-300">{acc.traffic_level}</td>
+                  <td className="p-3 font-black text-amber-700 dark:text-amber-400">{acc.risk_score}</td>
                 </tr>
               ))}
             </tbody>

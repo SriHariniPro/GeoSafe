@@ -85,27 +85,26 @@ export const LocationAutocomplete: React.FC<LocationAutocompleteProps> = ({
         {loading && <div className="absolute right-3 top-3 w-3 h-3 border-2 border-cyan-400 border-t-transparent rounded-full animate-spin"></div>}
       </div>
 
-      {/* Solid Opaque Dropdown Suggestions Panel */}
+      {/* Solid Dropdown Suggestions Panel */}
       {isOpen && suggestions.length > 0 && (
         <ul
-          style={{ backgroundColor: '#0f172a', zIndex: 99999, opacity: 1 }}
-          className="absolute left-0 right-0 top-full mt-1 border border-slate-700 rounded-xl shadow-2xl max-h-60 overflow-y-auto divide-y divide-slate-800"
+          style={{ zIndex: 99999 }}
+          className="absolute left-0 right-0 top-full mt-1 bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-700 rounded-xl shadow-2xl max-h-60 overflow-y-auto divide-y divide-slate-200 dark:divide-slate-800"
         >
           {suggestions.map((item, idx) => (
             <li
               key={`loc-${idx}`}
               onClick={() => handleSelect(item)}
-              style={{ backgroundColor: '#0f172a' }}
-              className="p-3 hover:bg-slate-800 cursor-pointer flex items-center justify-between transition-all"
+              className="p-3 bg-white hover:bg-slate-100 dark:bg-slate-900 dark:hover:bg-slate-800 cursor-pointer flex items-center justify-between transition-all"
             >
               <div className="flex items-center gap-2">
-                <MapPin className="w-3.5 h-3.5 text-cyan-400 shrink-0" />
+                <MapPin className="w-3.5 h-3.5 text-cyan-600 dark:text-cyan-400 shrink-0" />
                 <div>
-                  <span className="text-xs font-bold text-white block">{item.name}</span>
-                  <span className="text-[10px] text-slate-400">{item.area} ({item.type.toUpperCase()})</span>
+                  <span className="text-xs font-bold text-slate-900 dark:text-white block">{item.name}</span>
+                  <span className="text-[10px] text-slate-600 dark:text-slate-400">{item.area} ({item.type.toUpperCase()})</span>
                 </div>
               </div>
-              <span className="text-[9px] text-slate-500 font-mono">
+              <span className="text-[9px] text-slate-500 font-mono font-semibold">
                 {item.latitude.toFixed(3)}, {item.longitude.toFixed(3)}
               </span>
             </li>

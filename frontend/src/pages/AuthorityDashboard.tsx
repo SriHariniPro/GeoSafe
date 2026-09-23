@@ -145,7 +145,7 @@ export const AuthorityDashboard: React.FC<AuthorityDashboardProps> = ({ currentU
         <div className="overflow-x-auto">
           <table className="w-full text-left border-collapse">
             <thead>
-              <tr className="border-b border-navy-750 text-[10px] uppercase tracking-wider text-slate-400 bg-navy-950/60">
+              <tr className="border-b border-slate-300 dark:border-navy-750 text-[10px] uppercase tracking-wider font-extrabold text-slate-800 dark:text-slate-300 bg-slate-100 dark:bg-navy-950/60">
                 <th className="p-3">Priority</th>
                 <th className="p-3">Target Location / Corridor</th>
                 <th className="p-3">Recommended Infrastructure Action</th>
@@ -155,18 +155,18 @@ export const AuthorityDashboard: React.FC<AuthorityDashboardProps> = ({ currentU
                 {isAdmin && <th className="p-3 text-right">Actions</th>}
               </tr>
             </thead>
-            <tbody className="divide-y divide-navy-800 text-xs">
+            <tbody className="divide-y divide-slate-200 dark:divide-navy-800 text-xs">
               {interventions.map((itv) => (
-                <tr key={itv.id} className="hover:bg-navy-800/50 transition-all">
+                <tr key={itv.id} className="hover:bg-slate-50 dark:hover:bg-navy-800/50 transition-all">
                   <td className="p-3">
                     <span className={`text-[10px] font-extrabold px-2.5 py-1 rounded-full uppercase border ${getPriorityBadge(itv.priority)}`}>
                       {itv.priority}
                     </span>
                   </td>
-                  <td className="p-3 font-bold text-white max-w-[180px]">{itv.location_name}</td>
-                  <td className="p-3 font-semibold text-cyan-300 max-w-[240px] leading-snug">{itv.recommended_action}</td>
-                  <td className="p-3 text-slate-400 max-w-[260px] leading-relaxed">{itv.reason}</td>
-                  <td className="p-3 font-bold text-emerald-400 max-w-[200px]">{itv.expected_impact}</td>
+                  <td className="p-3 font-bold text-slate-900 dark:text-white max-w-[180px]">{itv.location_name}</td>
+                  <td className="p-3 font-bold text-cyan-700 dark:text-cyan-300 max-w-[240px] leading-snug">{itv.recommended_action}</td>
+                  <td className="p-3 text-slate-700 dark:text-slate-300 font-medium max-w-[260px] leading-relaxed">{itv.reason}</td>
+                  <td className="p-3 font-extrabold text-emerald-700 dark:text-emerald-400 max-w-[200px]">{itv.expected_impact}</td>
                   <td className="p-3">
                     <span className={`text-[10px] font-extrabold px-2 py-0.5 rounded border ${getStatusBadge(itv.status)}`}>
                       {itv.status}
@@ -176,9 +176,9 @@ export const AuthorityDashboard: React.FC<AuthorityDashboardProps> = ({ currentU
                     <td className="p-3 text-right">
                       <button
                         onClick={() => handleOpenEdit(itv)}
-                        className="px-2.5 py-1 rounded-lg bg-navy-800 hover:bg-navy-700 text-cyan-400 border border-navy-700 text-xs font-bold transition-all flex items-center gap-1 ml-auto"
+                        className="px-3 py-1.5 rounded-lg bg-indigo-600 hover:bg-indigo-500 active:scale-95 text-white font-extrabold text-xs shadow-sm flex items-center gap-1.5 ml-auto transition-all"
                       >
-                        <Edit3 className="w-3 h-3" /> Edit
+                        <Edit3 className="w-3.5 h-3.5" /> Edit
                       </button>
                     </td>
                   )}
@@ -195,7 +195,7 @@ export const AuthorityDashboard: React.FC<AuthorityDashboardProps> = ({ currentU
           <div className="bg-navy-900 border border-navy-700 rounded-3xl p-6 max-w-xl w-full space-y-4 shadow-2xl">
             <div className="flex items-center justify-between border-b border-navy-750 pb-3">
               <h3 className="text-sm font-extrabold text-white flex items-center gap-2">
-                <Edit3 className="w-4 h-4 text-cyan-400" /> Edit Intervention Record #{editingItem.id}
+                <Edit3 className="w-4 h-4 text-indigo-400" /> Edit Intervention Record #{editingItem.id}
               </h3>
               <button onClick={() => setEditingItem(null)} className="p-1 rounded text-slate-400 hover:text-white">
                 <X className="w-4 h-4" />

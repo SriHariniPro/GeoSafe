@@ -9,7 +9,7 @@
   --border-subtle: #1d2d50;
   --text-primary: #f8fafc;
   --text-secondary: #cbd5e1;
-  --text-muted: #64748b;
+  --text-muted: #94a3b8;
   color-scheme: dark;
 }
 
@@ -18,10 +18,10 @@ html.light {
   --bg-surface: #ffffff;
   --bg-card: #ffffff;
   --bg-input: #f1f5f9;
-  --border-subtle: #e2e8f0;
+  --border-subtle: #cbd5e1;
   --text-primary: #0f172a;
   --text-secondary: #334155;
-  --text-muted: #64748b;
+  --text-muted: #475569;
   color-scheme: light;
 }
 
@@ -36,10 +36,10 @@ body {
 }
 
 /* ========================================================
-   LIGHT MODE OVERRIDES FOR APP-WIDE ADAPTATION
+   LIGHT MODE CONTRAST & ACCESSIBILITY ENHANCEMENTS
    ======================================================== */
 
-/* Root & Layout */
+/* Root & Surfaces */
 html.light body {
   background-color: #f8fafc;
   color: #0f172a;
@@ -49,28 +49,34 @@ html.light .bg-navy-950 {
   background-color: #f8fafc !important;
 }
 
+html.light .bg-navy-950\/60,
+html.light .bg-navy-950\/80 {
+  background-color: #f1f5f9 !important;
+}
+
 html.light .bg-navy-900 {
   background-color: #ffffff !important;
 }
 
 html.light .bg-navy-900\/90 {
-  background-color: rgba(255, 255, 255, 0.92) !important;
+  background-color: rgba(255, 255, 255, 0.95) !important;
 }
 
 html.light .bg-navy-900\/80 {
-  background-color: rgba(255, 255, 255, 0.88) !important;
+  background-color: rgba(255, 255, 255, 0.92) !important;
 }
 
 html.light .bg-navy-900\/60 {
-  background-color: rgba(255, 255, 255, 0.75) !important;
+  background-color: rgba(255, 255, 255, 0.85) !important;
 }
 
 html.light .bg-navy-850 {
   background-color: #f8fafc !important;
 }
 
-html.light .bg-navy-850\/40 {
-  background-color: rgba(241, 245, 249, 0.6) !important;
+html.light .bg-navy-850\/40,
+html.light .bg-navy-850\/50 {
+  background-color: #f1f5f9 !important;
 }
 
 html.light .bg-navy-800 {
@@ -78,11 +84,12 @@ html.light .bg-navy-800 {
 }
 
 html.light .bg-navy-800\/80 {
-  background-color: rgba(241, 245, 249, 0.9) !important;
+  background-color: rgba(241, 245, 249, 0.95) !important;
 }
 
-html.light .bg-navy-800\/60 {
-  background-color: rgba(241, 245, 249, 0.7) !important;
+html.light .bg-navy-800\/60,
+html.light .bg-navy-800\/50 {
+  background-color: rgba(241, 245, 249, 0.8) !important;
 }
 
 /* Borders */
@@ -95,56 +102,204 @@ html.light .border-slate-800,
 html.light .border-slate-700,
 html.light .border-slate-700\/60,
 html.light .border-slate-700\/50 {
-  border-color: #e2e8f0 !important;
+  border-color: #cbd5e1 !important;
 }
 
-/* Text Colors */
+/* High Contrast Base Typography */
 html.light .text-slate-100 {
   color: #0f172a !important;
 }
 
 html.light .text-slate-200 {
-  color: #1e293b !important;
+  color: #0f172a !important;
+  font-weight: 600;
 }
 
 html.light .text-slate-300 {
-  color: #334155 !important;
+  color: #1e293b !important;
+  font-weight: 500;
 }
 
 html.light .text-slate-400 {
-  color: #64748b !important;
+  color: #334155 !important;
+  font-weight: 500;
 }
 
 html.light .text-slate-500 {
-  color: #64748b !important;
+  color: #475569 !important;
+  font-weight: 500;
 }
 
-/* Specific Headings & White text replacement, preserving button labels */
+/* Headings */
 html.light h1:not(.keep-white),
 html.light h2:not(.keep-white),
 html.light h3:not(.keep-white),
 html.light h4:not(.keep-white) {
-  color: #0f172a;
+  color: #0f172a !important;
+  font-weight: 800;
 }
 
 html.light span.text-white:not([class*="bg-"]):not(button *):not(a *),
 html.light div.text-white:not([class*="bg-"]):not(button *):not(a *),
 html.light p.text-white:not([class*="bg-"]):not(button *):not(a *) {
-  color: #0f172a;
+  color: #0f172a !important;
 }
 
-/* Form Inputs & Selects */
+/* High-Contrast Color Accents for Light Mode (WCAG AA/AAA Compliant) */
+html.light .text-cyan-400,
+html.light .text-cyan-300,
+html.light .text-cyan-200 {
+  color: #0369a1 !important; /* Sky-700 (5.8:1 contrast) */
+  font-weight: 700;
+}
+
+html.light .text-emerald-400,
+html.light .text-emerald-300 {
+  color: #047857 !important; /* Emerald-700 (4.8:1 contrast) */
+  font-weight: 700;
+}
+
+html.light .text-amber-400,
+html.light .text-amber-300,
+html.light .text-yellow-400,
+html.light .text-yellow-300 {
+  color: #b45309 !important; /* Amber-700 (5.2:1 contrast) */
+  font-weight: 700;
+}
+
+html.light .text-rose-400,
+html.light .text-rose-300 {
+  color: #be123c !important; /* Rose-700 (6.2:1 contrast) */
+  font-weight: 700;
+}
+
+html.light .text-purple-400,
+html.light .text-purple-300 {
+  color: #6d28d9 !important; /* Purple-700 (6.8:1 contrast) */
+  font-weight: 700;
+}
+
+html.light .text-indigo-400,
+html.light .text-indigo-300 {
+  color: #4338ca !important; /* Indigo-700 (7.2:1 contrast) */
+  font-weight: 700;
+}
+
+/* High-Contrast Badges & Priority Tags */
+html.light .bg-rose-950,
+html.light .bg-rose-950\/40,
+html.light .bg-rose-950\/50,
+html.light .bg-rose-950\/60,
+html.light .bg-rose-950\/80 {
+  background-color: #ffe4e6 !important;
+  color: #9f1239 !important;
+  border: 1px solid #f43f5e !important;
+  font-weight: 800 !important;
+}
+
+html.light .bg-amber-950,
+html.light .bg-amber-950\/40,
+html.light .bg-amber-950\/50,
+html.light .bg-amber-950\/60,
+html.light .bg-amber-950\/80,
+html.light .bg-yellow-950,
+html.light .bg-yellow-950\/40,
+html.light .bg-yellow-950\/50,
+html.light .bg-yellow-950\/60,
+html.light .bg-yellow-950\/80 {
+  background-color: #fef3c7 !important;
+  color: #92400e !important;
+  border: 1px solid #f59e0b !important;
+  font-weight: 800 !important;
+}
+
+html.light .bg-emerald-950,
+html.light .bg-emerald-950\/40,
+html.light .bg-emerald-950\/50,
+html.light .bg-emerald-950\/60,
+html.light .bg-emerald-950\/80 {
+  background-color: #d1fae5 !important;
+  color: #065f46 !important;
+  border: 1px solid #10b981 !important;
+  font-weight: 800 !important;
+}
+
+html.light .bg-cyan-950,
+html.light .bg-cyan-950\/80 {
+  background-color: #e0f2fe !important;
+  color: #0369a1 !important;
+  border: 1px solid #0284c7 !important;
+  font-weight: 800 !important;
+}
+
+html.light .bg-purple-950,
+html.light .bg-purple-950\/80 {
+  background-color: #f3e8ff !important;
+  color: #581c87 !important;
+  border: 1px solid #a855f7 !important;
+  font-weight: 800 !important;
+}
+
+html.light .bg-slate-800,
+html.light .bg-slate-800\/80,
+html.light .bg-slate-900,
+html.light .bg-slate-900\/80 {
+  background-color: #e2e8f0 !important;
+  color: #0f172a !important;
+  border: 1px solid #94a3b8 !important;
+  font-weight: 700 !important;
+}
+
+/* Tables & Data Grid Contrast */
+html.light table {
+  border-collapse: collapse;
+}
+
+html.light table thead tr {
+  background-color: #f1f5f9 !important;
+  border-bottom: 2px solid #cbd5e1 !important;
+}
+
+html.light table thead th {
+  color: #0f172a !important;
+  font-weight: 800 !important;
+  font-size: 11px !important;
+  letter-spacing: 0.05em;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+html.light table tbody tr {
+  border-bottom: 1px solid #e2e8f0 !important;
+}
+
+html.light table tbody tr:hover {
+  background-color: #f8fafc !important;
+}
+
+html.light table tbody td {
+  color: #1e293b !important;
+  font-size: 12px !important;
+}
+
+html.light table th,
+html.light table td {
+  border-color: #e2e8f0 !important;
+}
+
+/* Form Controls */
 html.light input:not([type="checkbox"]):not([type="radio"]),
 html.light select,
 html.light textarea {
   background-color: #ffffff !important;
   color: #0f172a !important;
-  border-color: #cbd5e1 !important;
+  border: 1.5px solid #cbd5e1 !important;
+  font-weight: 500;
 }
 
 html.light input::placeholder,
 html.light textarea::placeholder {
-  color: #94a3b8 !important;
+  color: #64748b !important;
 }
 
 html.light input:focus,
@@ -152,7 +307,7 @@ html.light select:focus,
 html.light textarea:focus {
   background-color: #ffffff !important;
   border-color: #0284c7 !important;
-  box-shadow: 0 0 0 2px rgba(2, 132, 199, 0.15) !important;
+  box-shadow: 0 0 0 2px rgba(2, 132, 199, 0.2) !important;
 }
 
 /* Select Dropdown options */
@@ -183,7 +338,7 @@ html.light select option:checked {
 html.light .shadow-lg,
 html.light .shadow-xl,
 html.light .shadow-2xl {
-  box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.06), 0 2px 6px -1px rgba(15, 23, 42, 0.04) !important;
+  box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.08), 0 2px 6px -1px rgba(15, 23, 42, 0.05) !important;
 }
 
 /* Gradients for Hero and Cards */
@@ -192,7 +347,7 @@ html.light .from-navy-950 {
 }
 
 html.light .from-cyan-950\/80 {
-  --tw-gradient-from: rgba(224, 242, 254, 0.85) var(--tw-gradient-from-position) !important;
+  --tw-gradient-from: rgba(224, 242, 254, 0.95) var(--tw-gradient-from-position) !important;
 }
 
 html.light .via-navy-900 {
@@ -208,50 +363,52 @@ html.light .bg-slate-900,
 html.light .bg-slate-900\/80,
 html.light .bg-slate-900\/60 {
   background-color: #f1f5f9 !important;
-  border-color: #e2e8f0 !important;
+  border-color: #cbd5e1 !important;
 }
 
 html.light .bg-slate-800 {
   background-color: #e2e8f0 !important;
-  color: #1e293b !important;
+  color: #0f172a !important;
 }
 
-/* Role / Status Badge tweaks for Light Mode */
-html.light .bg-rose-950,
-html.light .bg-rose-950\/80 {
-  background-color: #ffe4e6 !important;
-  color: #e11d48 !important;
-  border-color: #fecdd3 !important;
+/* Leaflet map styles */
+.leaflet-container {
+  background-color: #0a1120 !important;
+  font-family: inherit;
 }
 
-html.light .bg-emerald-950,
-html.light .bg-emerald-950\/80 {
-  background-color: #d1fae5 !important;
-  color: #059669 !important;
-  border-color: #a7f3d0 !important;
+.leaflet-popup-content-wrapper, .leaflet-popup-tip {
+  background-color: #0f182e !important;
+  color: #f8fafc !important;
+  border: 1px solid #1e293b;
 }
 
-html.light .bg-amber-950,
-html.light .bg-amber-950\/80,
-html.light .bg-amber-950\/40,
-html.light .bg-yellow-950 {
-  background-color: #fef3c7 !important;
-  color: #d97706 !important;
-  border-color: #fde68a !important;
-}
-
-/* Table styling for Light Mode */
-html.light table thead tr {
-  background-color: #f1f5f9 !important;
-}
-
-html.light table tbody tr:hover {
+html.light .leaflet-container {
   background-color: #f8fafc !important;
 }
 
-html.light table th,
-html.light table td {
-  border-color: #e2e8f0 !important;
+html.light .leaflet-popup-content-wrapper,
+html.light .leaflet-popup-tip {
+  background-color: #ffffff !important;
+  color: #0f172a !important;
+  border: 1.5px solid #cbd5e1;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.12), 0 8px 10px -6px rgba(0, 0, 0, 0.08);
+}
+
+/* Recharts Tooltips & Legend */
+html.light .recharts-tooltip-wrapper .recharts-default-tooltip,
+html.light .recharts-default-tooltip {
+  background-color: #ffffff !important;
+  border: 1.5px solid #cbd5e1 !important;
+  color: #0f172a !important;
+  border-radius: 12px !important;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.12) !important;
+}
+
+html.light .recharts-tooltip-item,
+html.light .recharts-tooltip-label {
+  color: #0f172a !important;
+  font-weight: 700;
 }
 
 /* Scrollbars */
@@ -280,46 +437,7 @@ html.light ::-webkit-scrollbar-thumb:hover {
   background: #94a3b8;
 }
 
-/* Leaflet map styles */
-.leaflet-container {
-  background-color: #0a1120 !important;
-  font-family: inherit;
-}
-
-.leaflet-popup-content-wrapper, .leaflet-popup-tip {
-  background-color: #0f182e !important;
-  color: #f8fafc !important;
-  border: 1px solid #1e293b;
-}
-
-html.light .leaflet-container {
-  background-color: #f8fafc !important;
-}
-
-html.light .leaflet-popup-content-wrapper,
-html.light .leaflet-popup-tip {
-  background-color: #ffffff !important;
-  color: #0f172a !important;
-  border: 1px solid #e2e8f0;
-  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
-}
-
-/* Recharts Tooltips & Legend */
-html.light .recharts-tooltip-wrapper .recharts-default-tooltip,
-html.light .recharts-default-tooltip {
-  background-color: #ffffff !important;
-  border: 1px solid #e2e8f0 !important;
-  color: #0f172a !important;
-  border-radius: 12px !important;
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1) !important;
-}
-
-html.light .recharts-tooltip-item,
-html.light .recharts-tooltip-label {
-  color: #0f172a !important;
-}
-
-/* Animations */
+/* Pulse Glow Animation */
 @keyframes pulse-glow {
   0%, 100% { opacity: 0.8; transform: scale(1); }
   50% { opacity: 1; transform: scale(1.08); }
@@ -327,4 +445,130 @@ html.light .recharts-tooltip-label {
 
 .animate-pulse-glow {
   animation: pulse-glow 2.5s infinite ease-in-out;
+}
+
+/* ========================================================
+   BLACK & WHITE / GRAYSCALE PRINT STYLESHEET (@media print)
+   ======================================================== */
+@media print {
+  *,
+  *::before,
+  *::after {
+    color: #000000 !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  html, body {
+    background-color: #ffffff !important;
+    color: #000000 !important;
+    font-size: 11pt !important;
+    line-height: 1.4 !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  /* Unclutter page layout for clean report printouts */
+  header,
+  aside,
+  button[title*="Mode"],
+  button[title*="Logout"] {
+    display: none !important;
+  }
+
+  main {
+    max-width: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    width: 100% !important;
+  }
+
+  /* Headings & Text */
+  h1, h2, h3, h4, h5, h6 {
+    color: #000000 !important;
+    font-weight: 900 !important;
+    page-break-after: avoid;
+    break-after: avoid;
+  }
+
+  p, span, div, li, td, th {
+    color: #000000 !important;
+  }
+
+  /* Cards and Containers */
+  .p-6, .p-5, .p-4, .rounded-2xl, .rounded-3xl, .rounded-xl {
+    border: 1.5px solid #000000 !important;
+    background-color: #ffffff !important;
+    border-radius: 6px !important;
+    page-break-inside: avoid;
+    break-inside: avoid;
+    margin-bottom: 12pt !important;
+  }
+
+  /* Tables: Crisp solid borders and legible headers */
+  table {
+    width: 100% !important;
+    border-collapse: collapse !important;
+    border: 2px solid #000000 !important;
+    page-break-inside: auto;
+  }
+
+  tr {
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+  }
+
+  thead tr, thead th {
+    background-color: #e5e7eb !important;
+    color: #000000 !important;
+    font-weight: 900 !important;
+    border: 1.5px solid #000000 !important;
+    padding: 6pt !important;
+    text-transform: uppercase;
+  }
+
+  tbody td {
+    border: 1px solid #000000 !important;
+    padding: 6pt !important;
+    color: #000000 !important;
+    font-size: 10pt !important;
+  }
+
+  /* Status & Priority Badges in Print */
+  span[class*="rounded"],
+  .inline-flex {
+    border: 1.5px solid #000000 !important;
+    background-color: #f3f4f6 !important;
+    color: #000000 !important;
+    font-weight: 900 !important;
+    padding: 2pt 6pt !important;
+    display: inline-block !important;
+  }
+
+  /* Ensure critical / high indicators have strong distinction in grayscale */
+  span[class*="rose"],
+  span[class*="amber"] {
+    border: 2px solid #000000 !important;
+    font-weight: 900 !important;
+    text-decoration: underline;
+  }
+
+  /* Links */
+  a {
+    color: #000000 !important;
+    text-decoration: underline !important;
+  }
+
+  /* Charts & SVGs */
+  svg text {
+    fill: #000000 !important;
+    font-weight: 700 !important;
+  }
+
+  svg line, svg path, svg rect {
+    stroke: #000000 !important;
+  }
 }

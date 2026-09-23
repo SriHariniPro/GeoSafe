@@ -64,9 +64,9 @@ export const ModelPerformancePage: React.FC = () => {
       </div>
 
       {/* Academic Disclaimer */}
-      <div className="p-4 rounded-2xl bg-amber-950/40 border border-amber-800/60 text-amber-300 text-xs font-semibold flex items-center gap-3">
-        <AlertCircle className="w-5 h-5 shrink-0" />
-        <p>{metrics.disclaimer}</p>
+      <div className="p-4 rounded-2xl bg-amber-50 dark:bg-amber-950/50 border border-amber-300 dark:border-amber-700 text-amber-900 dark:text-amber-200 text-xs font-semibold flex items-center gap-3 shadow-sm">
+        <AlertCircle className="w-5 h-5 text-amber-600 dark:text-amber-400 shrink-0" />
+        <p className="leading-relaxed">{metrics.disclaimer}</p>
       </div>
 
       {/* Metrics Cards Grid */}
@@ -120,19 +120,19 @@ export const ModelPerformancePage: React.FC = () => {
           <div className="overflow-x-auto">
             <table className="w-full text-center border-collapse">
               <thead>
-                <tr className="bg-navy-950 text-[10px] text-slate-400 uppercase">
-                  <th className="p-2 border border-navy-800">Actual \ Predicted</th>
+                <tr className="bg-slate-100 dark:bg-navy-950 text-[10px] text-slate-800 dark:text-slate-300 font-extrabold uppercase">
+                  <th className="p-2 border border-slate-300 dark:border-navy-800">Actual \ Predicted</th>
                   {metrics.classes.map(c => (
-                    <th key={`hdr-${c}`} className="p-2 border border-navy-800 text-cyan-400">{c}</th>
+                    <th key={`hdr-${c}`} className="p-2 border border-slate-300 dark:border-navy-800 text-cyan-700 dark:text-cyan-400 font-black">{c}</th>
                   ))}
                 </tr>
               </thead>
-              <tbody className="text-xs font-bold text-white">
+              <tbody className="text-xs font-bold text-slate-900 dark:text-white">
                 {metrics.confusion_matrix.map((row, rIdx) => (
                   <tr key={`row-${rIdx}`}>
-                    <td className="p-2 border border-navy-800 bg-navy-950 text-slate-300 font-extrabold">{metrics.classes[rIdx]}</td>
+                    <td className="p-2 border border-slate-300 dark:border-navy-800 bg-slate-100 dark:bg-navy-950 text-slate-900 dark:text-slate-300 font-extrabold">{metrics.classes[rIdx]}</td>
                     {row.map((val, cIdx) => (
-                      <td key={`cell-${rIdx}-${cIdx}`} className={`p-3 border border-navy-800 ${rIdx === cIdx ? 'bg-emerald-950/80 text-emerald-300' : 'bg-navy-850/40 text-slate-400'}`}>
+                      <td key={`cell-${rIdx}-${cIdx}`} className={`p-3 border border-slate-300 dark:border-navy-800 ${rIdx === cIdx ? 'bg-emerald-100 dark:bg-emerald-950/80 text-emerald-800 dark:text-emerald-300 font-black' : 'bg-slate-50 dark:bg-navy-850/40 text-slate-600 dark:text-slate-400'}`}>
                         {val}
                       </td>
                     ))}

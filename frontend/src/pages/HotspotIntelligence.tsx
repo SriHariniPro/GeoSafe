@@ -107,7 +107,7 @@ export const HotspotIntelligence: React.FC = () => {
         <div className="overflow-x-auto">
           <table className="w-full text-left border-collapse">
             <thead>
-              <tr className="border-b border-navy-750 text-[10px] uppercase tracking-wider text-slate-400 bg-navy-950/60">
+              <tr className="border-b border-slate-300 dark:border-navy-750 text-[10px] uppercase tracking-wider font-extrabold text-slate-800 dark:text-slate-300 bg-slate-100 dark:bg-navy-950/60">
                 <th className="p-3">Cluster ID</th>
                 <th className="p-3">Road / Corridor</th>
                 <th className="p-3">Area</th>
@@ -119,20 +119,20 @@ export const HotspotIntelligence: React.FC = () => {
                 <th className="p-3">Dominant Weather</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-navy-800 text-xs">
+            <tbody className="divide-y divide-slate-200 dark:divide-navy-800 text-xs">
               {hotspots.map((hs) => (
-                <tr key={hs.id} className="hover:bg-navy-800/50 transition-all">
-                  <td className="p-3 font-bold text-rose-400">#{hs.cluster_id}</td>
-                  <td className="p-3 font-bold text-white">{hs.road_name || 'Corridor'}</td>
-                  <td className="p-3 text-slate-300">{hs.area_name || 'Chennai'}</td>
-                  <td className="p-3 font-extrabold text-white">{hs.accident_count}</td>
-                  <td className="p-3 font-bold text-amber-400">{hs.severity_score}/5.0</td>
-                  <td className="p-3 font-black text-cyan-400">{hs.hotspot_score}</td>
+                <tr key={hs.id} className="hover:bg-slate-50 dark:hover:bg-navy-800/50 transition-all">
+                  <td className="p-3 font-bold text-rose-600 dark:text-rose-400">#{hs.cluster_id}</td>
+                  <td className="p-3 font-bold text-slate-900 dark:text-white">{hs.road_name || 'Corridor'}</td>
+                  <td className="p-3 font-semibold text-slate-700 dark:text-slate-300">{hs.area_name || 'Chennai'}</td>
+                  <td className="p-3 font-black text-slate-900 dark:text-white">{hs.accident_count}</td>
+                  <td className="p-3 font-bold text-amber-700 dark:text-amber-400">{hs.severity_score}/5.0</td>
+                  <td className="p-3 font-black text-cyan-700 dark:text-cyan-400">{hs.hotspot_score}</td>
                   <td className="p-3">
                     <RiskBadge level={hs.risk_level} size="sm" />
                   </td>
-                  <td className="p-3 text-slate-300">{hs.dominant_time}</td>
-                  <td className="p-3 text-slate-300">{hs.dominant_weather}</td>
+                  <td className="p-3 font-medium text-slate-700 dark:text-slate-300">{hs.dominant_time}</td>
+                  <td className="p-3 font-medium text-slate-700 dark:text-slate-300">{hs.dominant_weather}</td>
                 </tr>
               ))}
             </tbody>
