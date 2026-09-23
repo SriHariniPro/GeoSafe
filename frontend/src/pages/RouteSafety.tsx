@@ -30,7 +30,8 @@ export const RouteSafety: React.FC = () => {
       const res = await analyzeRoute(origin, destination);
       setRouteResult(res);
       if (res.routes && res.routes.length > 0) {
-        setSelectedRoute(res.routes[2] || res.routes[0]); // Default to SAFEST route
+        const safest = res.routes.find(r => r.strategy === 'SAFEST');
+        setSelectedRoute(safest || res.routes[0]);
       }
     } catch (err) {
       console.error('Route analysis error:', err);
@@ -41,26 +42,28 @@ export const RouteSafety: React.FC = () => {
 
   const getStrategyBadge = (strat: string) => {
     switch (strat) {
-      case 'SAFEST': return 'bg-emerald-950 text-emerald-400 border-emerald-800';
-      case 'BALANCED': return 'bg-amber-950 text-amber-400 border-amber-800';
-      case 'FASTEST': return 'bg-rose-950 text-rose-400 border-rose-800';
-      default: return 'bg-slate-900 text-slate-300 border-slate-700';
+      case 'SAFEST': return 'bg-emerald-100 text-emerald-900 dark:bg-emerald-950 dark:text-emerald-300 border-emerald-400 dark:border-emerald-800 font-black';
+      case 'BALANCED': return 'bg-amber-100 text-amber-900 dark:bg-amber-950 dark:text-amber-300 border-amber-400 dark:border-amber-800 font-black';
+      case 'FASTEST': return 'bg-rose-100 text-rose-900 dark:bg-rose-950 dark:text-rose-300 border-rose-400 dark:border-rose-800 font-black';
+      case 'DIRECT': return 'bg-cyan-100 text-cyan-900 dark:bg-cyan-950 dark:text-cyan-300 border-cyan-400 dark:border-cyan-800 font-black';
+      case 'BYPASS': return 'bg-purple-100 text-purple-900 dark:bg-purple-950 dark:text-purple-300 border-purple-400 dark:border-purple-800 font-black';
+      default: return 'bg-slate-100 text-slate-900 dark:bg-slate-900 dark:text-slate-300 border-slate-300 dark:border-slate-700 font-black';
     }
   };
 
   return (
     <div className="space-y-8">
       <div>
-        <h2 className="text-2xl font-black text-white tracking-tight flex items-center gap-2">
-          <Navigation className="w-6 h-6 text-emerald-400" /> Safety-Aware Route Optimization Engine
+        <h2 className="text-2xl font-black text-slate-900 dark:text-white tracking-tight flex items-center gap-2">
+          <Navigation className="w-6 h-6 text-emerald-500" /> Safety-Aware Route Optimization Engine
         </h2>
-        <p className="text-xs text-slate-400">Search origin and destination to compare Fastest, Balanced, and Safest route exposure</p>
+        <p className="text-xs text-slate-600 dark:text-slate-400">Search origin and destination to compare 5 route alternatives with hotspot-evasive routing</p>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+      <div className="grid grid-cols-1 xl:grid-cols-4 gap-6">
         {/* Origin & Destination Autocomplete Form */}
-        <form onSubmit={handleAnalyze} className="p-6 rounded-2xl bg-navy-900 border border-navy-700/60 shadow-xl space-y-4">
-          <h3 className="text-sm font-bold text-white mb-2">From → To Route Query</h3>
+        <form onSubmit={handleAnalyze} className="p-6 rounded-2xl bg-white dark:bg-navy-900 border border-slate-200 dark:border-navy-700/60 shadow-xl space-y-4 xl:col-span-1 h-fit">
+          <h3 className="text-sm font-bold text-slate-900 dark:text-white mb-2">From → To Route Query</h3>
 
           {/* Origin Autocomplete */}
           <LocationAutocomplete
@@ -85,57 +88,63 @@ export const RouteSafety: React.FC = () => {
             disabled={loading}
             className="w-full py-3.5 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white font-black text-xs uppercase tracking-widest shadow-lg shadow-emerald-600/20 transition-all flex items-center justify-center gap-2"
           >
-            {loading ? 'Evaluating Spatial Graph...' : 'Analyze Route Safety'} <ArrowRight className="w-4 h-4" />
+            {loading ? 'Evaluating 5 Spatial Routes...' : 'Analyze 5 Safety Routes'} <ArrowRight className="w-4 h-4" />
           </button>
         </form>
 
         {/* Route Output & Strategy Comparison */}
-        <div className="lg:col-span-2 space-y-6">
+        <div className="xl:col-span-3 space-y-6">
           {routeResult ? (
             <>
-              {/* Route Candidate Strategy Cards */}
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              {/* 5 Route Candidate Strategy Cards Grid */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3.5">
                 {routeResult.routes.map((rt) => (
                   <button
                     key={rt.strategy}
                     onClick={() => setSelectedRoute(rt)}
-                    className={`p-5 rounded-2xl border text-left transition-all space-y-3 ${
+                    className={`p-4 rounded-2xl border text-left transition-all space-y-2.5 flex flex-col justify-between ${
                       selectedRoute?.strategy === rt.strategy
-                        ? 'bg-slate-50 dark:bg-navy-850 border-emerald-500 shadow-xl shadow-emerald-500/10 ring-2 ring-emerald-500/80'
-                        : 'bg-white dark:bg-navy-900 border-slate-200 dark:border-navy-750 hover:bg-slate-50/80 dark:hover:bg-navy-850/50 shadow-sm'
+                        ? 'bg-emerald-50/60 dark:bg-navy-850 border-emerald-500 shadow-xl shadow-emerald-500/10 ring-2 ring-emerald-500'
+                        : 'bg-white dark:bg-navy-900 border-slate-200 dark:border-navy-750 hover:bg-slate-50 dark:hover:bg-navy-850/50 shadow-sm'
                     }`}
                   >
-                    <div className="flex items-center justify-between">
-                      <span className={`text-[10px] font-black uppercase px-2 py-0.5 rounded border ${getStrategyBadge(rt.strategy)}`}>
-                        {rt.strategy}
-                      </span>
-                      <RiskBadge level={rt.risk_level} size="sm" />
-                    </div>
-
-                    <div>
-                      <div className="text-3xl font-black text-slate-900 dark:text-white flex items-baseline gap-1">
-                        <span>{rt.safety_score}</span>
-                        <span className="text-xs text-slate-500 dark:text-slate-400 font-normal">/ 100</span>
+                    <div className="space-y-2">
+                      <div className="flex items-center justify-between gap-1">
+                        <span className={`text-[10px] uppercase px-2 py-0.5 rounded border ${getStrategyBadge(rt.strategy)}`}>
+                          {rt.strategy}
+                        </span>
+                        <RiskBadge level={rt.risk_level} size="sm" />
                       </div>
-                      <span className="text-[10px] text-slate-500 dark:text-slate-400 font-bold uppercase tracking-wider">Safety Score</span>
+
+                      <div>
+                        <div className="text-2xl font-black text-slate-950 dark:text-white flex items-baseline gap-1">
+                          <span>{rt.safety_score}</span>
+                          <span className="text-xs text-slate-500 dark:text-slate-400 font-semibold">/ 100</span>
+                        </div>
+                        <span className="text-[9px] text-slate-500 dark:text-slate-400 font-bold uppercase tracking-wider">Safety Score</span>
+                      </div>
                     </div>
 
-                    <div className="space-y-1.5 text-xs border-t border-slate-200 dark:border-navy-750 pt-2.5 text-slate-700 dark:text-slate-300 font-medium">
+                    <div className="space-y-1.5 text-[11px] border-t border-slate-200 dark:border-navy-750 pt-2 text-slate-700 dark:text-slate-300 font-medium w-full">
                       <div className="flex justify-between">
                         <span className="text-slate-500 dark:text-slate-400">Distance & Time:</span>
-                        <span className="font-bold text-slate-900 dark:text-white">{rt.distance_km} km ({rt.duration_min} min)</span>
+                        <span className="font-bold text-slate-900 dark:text-white">{rt.distance_km} km ({rt.duration_min}m)</span>
                       </div>
-                      <div className="flex justify-between">
-                        <span className="text-slate-500 dark:text-slate-400">Hotspots Crossed:</span>
-                        <span className="text-rose-600 dark:text-rose-400 font-extrabold">{rt.hotspots_crossed}</span>
+                      <div className="flex justify-between items-center">
+                        <span className="text-slate-500 dark:text-slate-400">Hotspots:</span>
+                        {rt.hotspots_crossed === 0 ? (
+                          <span className="text-emerald-800 dark:text-emerald-300 bg-emerald-100 dark:bg-emerald-950 px-1.5 py-0.5 rounded font-black text-[10px] border border-emerald-300 dark:border-emerald-800">0 (Zero Hotspot)</span>
+                        ) : (
+                          <span className="text-rose-600 dark:text-rose-400 font-extrabold">{rt.hotspots_crossed}</span>
+                        )}
                       </div>
                       <div className="flex justify-between">
                         <span className="text-slate-500 dark:text-slate-400">Accidents Near:</span>
-                        <span className="text-amber-600 dark:text-amber-400 font-extrabold">{rt.accidents_near}</span>
+                        <span className="text-amber-800 dark:text-amber-400 font-bold">{rt.accidents_near}</span>
                       </div>
                       <div className="flex justify-between">
-                        <span className="text-slate-500 dark:text-slate-400">Construction Near:</span>
-                        <span className="text-yellow-600 dark:text-yellow-400 font-extrabold">{rt.construction_near}</span>
+                        <span className="text-slate-500 dark:text-slate-400">Construction:</span>
+                        <span className="text-yellow-800 dark:text-yellow-400 font-bold">{rt.construction_near}</span>
                       </div>
                     </div>
                   </button>
@@ -145,8 +154,8 @@ export const RouteSafety: React.FC = () => {
               {/* Multi-Layer Route Map */}
               {selectedRoute && (
                 <div className="space-y-2">
-                  <div className="flex items-center justify-between text-xs text-slate-400">
-                    <span>Displaying Map Layers for <strong className="text-white">{selectedRoute.strategy} Strategy</strong> ({routeResult.origin} → {routeResult.destination})</span>
+                  <div className="flex items-center justify-between text-xs text-slate-600 dark:text-slate-400">
+                    <span>Displaying Map Layers for <strong className="text-slate-900 dark:text-white">{selectedRoute.strategy} Strategy</strong> ({routeResult.origin} → {routeResult.destination})</span>
                   </div>
                   <OfflineMap
                     accidents={accidents}
@@ -161,11 +170,11 @@ export const RouteSafety: React.FC = () => {
               )}
             </>
           ) : (
-            <div className="p-12 rounded-2xl bg-navy-900/60 border border-navy-700/60 text-center space-y-3">
-              <Navigation className="w-12 h-12 text-slate-600 mx-auto" />
-              <h3 className="text-base font-bold text-slate-300">Safety-Aware Route Comparison</h3>
+            <div className="p-12 rounded-2xl bg-white dark:bg-navy-900/60 border border-slate-200 dark:border-navy-700/60 text-center space-y-3 shadow-sm">
+              <Navigation className="w-12 h-12 text-slate-400 mx-auto" />
+              <h3 className="text-base font-bold text-slate-800 dark:text-slate-300">Safety-Aware Route Comparison (5 Strategies)</h3>
               <p className="text-xs text-slate-500 max-w-md mx-auto">
-                Type an Origin and Destination into the search fields on the left and click "Analyze Route Safety" to compare routes and view accident, hotspot, and construction map layers.
+                Type an Origin and Destination into the search fields on the left and click "Analyze 5 Safety Routes" to compare FASTEST, BALANCED, SAFEST (Zero-Hotspot Bypass), DIRECT, and BYPASS corridors.
               </p>
             </div>
           )}

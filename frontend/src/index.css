@@ -208,9 +208,22 @@ html.light .bg-yellow-950\/50,
 html.light .bg-yellow-950\/60,
 html.light .bg-yellow-950\/80 {
   background-color: #fef3c7 !important;
-  color: #92400e !important;
+  color: #78350f !important;
   border: 1px solid #f59e0b !important;
   font-weight: 800 !important;
+}
+
+.performance-disclaimer-box {
+  background-color: #fef3c7 !important;
+  color: #78350f !important;
+  border: 1.5px solid #f59e0b !important;
+  font-weight: 700 !important;
+}
+
+html.dark .performance-disclaimer-box {
+  background-color: rgba(69, 26, 3, 0.65) !important;
+  color: #fef08a !important;
+  border: 1px solid #b45309 !important;
 }
 
 html.light .bg-emerald-950,

@@ -64,7 +64,7 @@ export const ModelPerformancePage: React.FC = () => {
       </div>
 
       {/* Academic Disclaimer */}
-      <div className="p-4 rounded-2xl bg-amber-50 dark:bg-amber-950/50 border border-amber-300 dark:border-amber-700 text-amber-900 dark:text-amber-200 text-xs font-semibold flex items-center gap-3 shadow-sm">
+      <div className="performance-disclaimer-box p-4 rounded-2xl text-xs font-semibold flex items-center gap-3 shadow-sm">
         <AlertCircle className="w-5 h-5 text-amber-600 dark:text-amber-400 shrink-0" />
         <p className="leading-relaxed">{metrics.disclaimer}</p>
       </div>
